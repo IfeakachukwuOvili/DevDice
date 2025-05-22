@@ -144,3 +144,24 @@ This project is licensed under the MIT License.
 
 **DevDice** was built as a learning project to explore full-stack development, authentication, and modern UI/UX practices.  
 Thank you for checking it out!
+
+
+## Here is a sneek peak into the website, I did not post some pictures so clone and have a complete fill:
+
+![image](https://github.com/user-attachments/assets/c5eed4c9-9cd4-4229-81c7-12d8d0ea8948)
+
+![image](https://github.com/user-attachments/assets/3a64d07e-0d3f-43e0-af62-85285e5ec109)
+
+![image](https://github.com/user-attachments/assets/3c95c5b2-61d9-400c-a381-053e8480793f)
+
+![image](https://github.com/user-attachments/assets/66fb6cf2-95fc-4836-9e24-0941c66df17b)
+
+![image](https://github.com/user-attachments/assets/3a0f99c1-2060-4ba9-8c74-ac66004f7e79)
+
+![image](https://github.com/user-attachments/assets/2be5ff4e-0ef8-4085-be5e-cb5ba68cb822)
+
+
+
+
+
+
