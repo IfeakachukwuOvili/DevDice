@@ -1,0 +1,33 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./devdice.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Challenge {
+  id             Int             @id @default(autoincrement())
+  title          String
+  description    String
+  userChallenges UserChallenge[]
+}
+
+model UserChallenge {
+  id          Int       @id @default(autoincrement())
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+  challengeId Int
+  status      String // "pending" | "completed"
+  createdAt   DateTime  @default(now())
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  name              String   // <-- add this back if needed
+  email             String   @unique
+  password          String
+  createdAt         DateTime @default(now()) // <-- add this back if needed
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+}
