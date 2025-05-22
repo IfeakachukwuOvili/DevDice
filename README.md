@@ -61,7 +61,7 @@ devdice/
 
 ### **1. Clone the repository**
 ```sh
-git clone https://github.com/yourusername/devdice.git
+git clone https://github.com/IfeakachukwuOvili/DevDice.git
 cd devdice
 ```
 
