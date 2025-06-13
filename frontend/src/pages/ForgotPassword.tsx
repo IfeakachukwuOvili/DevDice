@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -27,7 +29,7 @@ export default function ForgotPassword() {
 
     try {
       setIsLoading(true);
-      await axios.post('http://localhost:4000/users/reset-password', {
+      await axios.post(`${BACKEND_URL}/users/reset-password`, {
         email,
         newPassword,
       });

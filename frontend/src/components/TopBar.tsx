@@ -1,8 +1,10 @@
+
+// I could not get the toggle button to work on this project despite the fact that my code seems correct so i commented out the logic and design.
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { IoMoon, IoSunny } from 'react-icons/io5';
+//import { IoMoon, IoSunny } from 'react-icons/io5';
 import Modal from './Modal';
-import { useTheme } from '../hooks/useTheme';
+//import { useTheme } from '../hooks/useTheme';
 import { useUser } from '../hooks/useUser';
 import { useDropdown } from '../hooks/useDropdown';
 
@@ -11,7 +13,7 @@ const ADMIN_SECRET_KEY = import.meta.env.VITE_ADMIN_SECRET_KEY;
 export default function TopBar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { isDark, toggleTheme } = useTheme();
+  //const { isDark, toggleTheme } = useTheme();
   const { isDropdownOpen, setIsDropdownOpen, dropdownRef } = useDropdown();
   const {
     user,
@@ -71,7 +73,7 @@ export default function TopBar() {
 
           {/* Right side: profile */}
           <div className="flex items-center gap-4 ml-auto">
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle theme"
@@ -81,7 +83,7 @@ export default function TopBar() {
               ) : (
                 <IoMoon className="text-xl text-gray-600" />
               )}
-            </button>
+            </button> */}
 
             <div className="relative" ref={dropdownRef}>
               <button

@@ -1,4 +1,5 @@
 import axios from 'axios';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; 
 
 interface HandleLoginParams {
   email: string;
@@ -55,7 +56,7 @@ export const handleLogin = async ({
     setError('');
     setFieldErrors({ email: '', password: '' });
 
-    const response = await axios.post('http://localhost:4000/users/login', {
+    const response = await axios.post(`${BACKEND_URL}/users/login`, {
       email,
       password,
     });
