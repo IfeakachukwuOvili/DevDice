@@ -84,7 +84,7 @@ export default function AdminAddChallenge() {
             setMessage('No valid challenges found in CSV.');
             return;
           }
-          await axios.post('http://localhost:4000/challenges/bulk', { challenges: validChallenges });
+          await axios.post('/challenges/bulk', { challenges: validChallenges });
           setMessage('CSV uploaded and challenges added!');
           fetchChallenges();
         } catch (err: any) {
