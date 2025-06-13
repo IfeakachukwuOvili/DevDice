@@ -6,6 +6,8 @@ import { useTheme } from '../hooks/useTheme';
 import { useUser } from '../hooks/useUser';
 import { useDropdown } from '../hooks/useDropdown';
 
+const ADMIN_SECRET_KEY = import.meta.env.VITE_ADMIN_SECRET_KEY;
+
 export default function TopBar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -217,7 +219,7 @@ export default function TopBar() {
           setAdminKeyError('');
         }}
         onConfirm={() => {
-          if (adminKeyInput === 'Cencadian_2025') {
+          if (adminKeyInput === ADMIN_SECRET_KEY) {
             // Set isAdmin to true in localStorage user object
             const userObj = JSON.parse(localStorage.getItem('user') || '{}');
             userObj.isAdmin = true;
