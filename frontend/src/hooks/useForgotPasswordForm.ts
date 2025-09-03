@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // Add this line
+
 export function useForgotPasswordForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export function useForgotPasswordForm() {
     setMessage(null);
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:4000/users/reset-password', { email }, {
+      await axios.post(`${BACKEND_URL}/users/reset-password`, { email }, {
         headers: { 'Content-Type': 'application/json' },
       });
       setMessage(GENERIC_MSG);

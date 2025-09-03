@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { passwordRequirements } from '../utils/signupUtils';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // Add this line
+
 interface FormData {
   name: string;
   email: string;
@@ -58,7 +60,7 @@ export function useSignupForm(navigate: (path: string) => void) {
 
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:4000/users/signup', {
+      await axios.post(`${BACKEND_URL}/users/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
