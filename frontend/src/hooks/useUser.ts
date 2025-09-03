@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // Add this line
+
 export interface User {
   id: number;
   name: string;
@@ -44,7 +46,7 @@ export const useUser = () => {
       }
 
       const response = await axios.delete(
-        `http://localhost:4000/users/${encodeURIComponent(userObj.email)}`,
+        `${BACKEND_URL}/users/${encodeURIComponent(userObj.email)}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -73,7 +75,7 @@ export const useUser = () => {
       const token = localStorage.getItem('token');
       if (!user) throw new Error('User not found');
       const response = await axios.put(
-        `http://localhost:4000/users/${user.email}`,
+        `${BACKEND_URL}/users/${user.email}`,
         {
           name: newName || user.name,
           currentPassword,
