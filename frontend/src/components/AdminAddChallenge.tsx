@@ -5,6 +5,8 @@ import Papa from 'papaparse';
 import type { ParseResult } from 'papaparse';
 import Modal from './Modal';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // Add this line
+
 // this is like the model we would have in mongodb.
 // it is used to define the shape of the data we are working with
 type Challenge = {
@@ -26,7 +28,7 @@ export default function AdminAddChallenge() {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const fetchChallenges = async () => {
-    const res = await axios.get('/challenges');
+    const res = await axios.get(`${BACKEND_URL}/challenges`); // Use BACKEND_URL
     setChallenges(Array.isArray(res.data) ? res.data : []);
   };
 
@@ -40,7 +42,7 @@ export default function AdminAddChallenge() {
     e.preventDefault();
     setMessage(null);
     try {
-      await axios.post('/challenges', { title, description });
+      await axios.post(`${BACKEND_URL}/challenges`, { title, description }); // Use BACKEND_URL
       setMessage('Challenge added!');
       setTitle('');
       setDescription('');
@@ -60,7 +62,7 @@ export default function AdminAddChallenge() {
 
   // Save edit
   const handleEditSave = async (id: number) => {
-    await axios.put(`/challenges/${id}`, { title: editTitle, description: editDescription });
+    await axios.put(`${BACKEND_URL}/challenges/${id}`, { title: editTitle, description: editDescription }); // Use BACKEND_URL
     setEditingId(null);
     fetchChallenges();
   };
@@ -84,7 +86,7 @@ export default function AdminAddChallenge() {
             setMessage('No valid challenges found in CSV.');
             return;
           }
-          await axios.post('/challenges/bulk', { challenges: validChallenges });
+          await axios.post(`${BACKEND_URL}/challenges/bulk`, { challenges: validChallenges }); // Use BACKEND_URL
           setMessage('CSV uploaded and challenges added!');
           fetchChallenges();
         } catch (err: any) {
@@ -99,7 +101,7 @@ export default function AdminAddChallenge() {
 
   const handleConfirmDelete = async () => {
     if (deleteId !== null) {
-      await axios.delete(`/challenges/${deleteId}`);
+      await axios.delete(`${BACKEND_URL}/challenges/${deleteId}`); // Use BACKEND_URL
       fetchChallenges();
       setMessage('Challenge deleted.');
     }
